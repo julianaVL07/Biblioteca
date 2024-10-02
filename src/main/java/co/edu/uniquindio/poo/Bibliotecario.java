@@ -5,10 +5,12 @@ import java.util.LinkedList;
 public class Bibliotecario extends Persona {
     private double salario;
     private LinkedList<Prestamo>prestamos;
+    private int antiguedad;
 
-    public Bibliotecario(String nombre, String cedula, String telefono, String correo, double salario) {
+    public Bibliotecario(String nombre, String cedula, String telefono, String correo,int antiguedad) {
         super(nombre, cedula, telefono, correo);
-        this.salario = salario;
+        this.salario =0;
+        this.antiguedad=antiguedad;
         prestamos=new LinkedList<>();
     }
 
@@ -28,14 +30,32 @@ public class Bibliotecario extends Persona {
         this.prestamos = prestamos;
     }
 
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+        this.antiguedad = antiguedad;
+    }
+    
     @Override
     public String toString() {
-        return "Bibliotecario - nombre=" + nombre + ", cedula=" + cedula + ", telefono=" + telefono + ", salario="
-                + salario + ", correo=" + correo + "\nprestamos=\n" + prestamos+"\n";
+        return "Bibliotecario - nombre=" + nombre + ", cedula=" + cedula + ", telefono=" + telefono +  ", correo=" + correo+", antiguedad="+antiguedad +" años "+", salario="+ salario +"\nprestamos=\n" + prestamos+"\n";
     }
 
     public void agregarPrestamoBibliotecario(Prestamo prestamo){
         prestamos.add(prestamo);
+        this.salario=calcularTotalAPagar();
     }
-    
+
+    //metodo que calcula el total de dinero a pagar a los bibliotecarios
+    public double calcularTotalAPagar() {
+        double totalBase = 0;
+
+        for (Prestamo prestamo : prestamos) {
+            totalBase += prestamo.getValor() * 0.20;
+        }
+        double bonificacion = totalBase * (0.02 * antiguedad);
+        return totalBase + bonificacion;
+    }
 }

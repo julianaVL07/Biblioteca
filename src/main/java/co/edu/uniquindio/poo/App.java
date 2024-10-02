@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo;
 import java.time.LocalDate;
+import java.util.LinkedList;
 /**
  * Hello world!
  *
@@ -11,8 +12,8 @@ public class App {
         Biblioteca biblioteca = new Biblioteca("La Central");
 
         //creamos los prestamos
-        Prestamo prestamo = new Prestamo(LocalDate.of(2024, 10, 1), LocalDate.of(2024, 10, 15));
-        Prestamo prestamo2 = new Prestamo(LocalDate.of(2024, 10, 5), LocalDate.of(2024, 10, 20));
+        Prestamo prestamo = new Prestamo(LocalDate.of(2024, 10, 1), LocalDate.of(2024, 10, 15),3000);
+        Prestamo prestamo2 = new Prestamo(LocalDate.of(2024, 10, 5), LocalDate.of(2024, 10, 20),5000);
 
         //creamos los autores 
         Autor autor = new Autor("Gabriel García Márquez", "123456789", "3001234567", "gabriel@gabo.com", 87);
@@ -36,8 +37,8 @@ public class App {
         DetallePrestamo detallePrestamo3 = new DetallePrestamo(3, libro3);
 
         //creamos los bibliotecarios
-        Bibliotecario bibliotecario = new Bibliotecario("Ana Pérez", "123456789", "3001234567", "ana@biblioteca.com", 2500.50);
-        Bibliotecario bibliotecario2 = new Bibliotecario("Carlos Gómez", "987654321", "3007654321", "carlos@biblioteca.com", 2800.75);
+        Bibliotecario bibliotecario = new Bibliotecario("Ana Pérez", "123456789", "3001234567", "ana@biblioteca.com", 10);
+        Bibliotecario bibliotecario2 = new Bibliotecario("Carlos Gómez", "987654321", "3007654321", "carlos@biblioteca.com", 4);
 
         //creamos los estudiantes
         Estudiante estudiante = new Estudiante("Juan Pérez", "123456789", "3001234567", "juan@estudiante.com", 1000.50);
@@ -62,12 +63,13 @@ public class App {
 
         // Agregar prestamos al bibliotecario
         bibliotecario.agregarPrestamoBibliotecario(prestamo);
+        bibliotecario.agregarPrestamoBibliotecario(prestamo2);
         bibliotecario2.agregarPrestamoBibliotecario(prestamo2);
 
          // Agregar detalleprestamos a prestamo
         prestamo.agregarDetallePrestamos(detallePrestamo);
         prestamo.agregarDetallePrestamos(detallePrestamo2);
-        prestamo2.agregarDetallePrestamos(detallePrestamo3);
+        prestamo2.agregarDetallePrestamos(detallePrestamo);
 
         // Agregar libros a editorial
         editorial.agregarLibroEditorial(libro);
@@ -87,9 +89,28 @@ public class App {
         // Agregar prestamos a estudiantes
         estudiante.agregarPrestamoEstudiante(prestamo);
         estudiante2.agregarPrestamoEstudiante(prestamo2);
+        estudiante2.agregarPrestamoEstudiante(prestamo);
 
         // Mostrar mensaje biblioteca
         Biblioteca.mostrarMensaje(biblioteca.toString());
+
+        //Consultar la cantidad de prestamos en los cuales esta incluido el nombre de un libro
+        String nombreLibro=libro.getTitulo();
+        int totalPrestamo=biblioteca.consularPrestamoLibro(nombreLibro);
+        Biblioteca.mostrarMensaje("\nEl libro "+nombreLibro+ " está en "+totalPrestamo+" préstamo(s)");
+
+        //mostrar la cantidad de préstamos realizados por cada empleado
+        LinkedList<String>cantidadPrestamos=biblioteca.mostrarCantidadPrestamos();
+        Biblioteca.mostrarMensaje("\nCantidad de préstamos realizado por cada empleado: \n"+cantidadPrestamos);
+
+        //datos del estudiante con más préstamos
+        Estudiante estudianteMasPrestamos=biblioteca.mostrarEstudianteMasPrestamos();
+        Biblioteca.mostrarMensaje("\nEl estudiante con mas prestamos es:\n" + estudianteMasPrestamos);
+
+        //total de dinero a pagar a los bibliotecarios o salario
+        Biblioteca.mostrarMensaje("\nsalario bibliotecarios\n"+bibliotecario.toString());
+        Biblioteca.mostrarMensaje(bibliotecario2.toString());
+
     }
 }
     

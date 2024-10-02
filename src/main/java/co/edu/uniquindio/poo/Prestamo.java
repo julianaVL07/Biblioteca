@@ -7,11 +7,13 @@ public class Prestamo {
     private LocalDate fechaPrestamo;
     private LocalDate fechaDevolucion;
     private LinkedList<DetallePrestamo>detalleprestamos;
+    private double valor;
     
-    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaDevolucion) {
+    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaDevolucion,double valor) {
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
         detalleprestamos=new LinkedList<>();
+        this.valor=valor;
     }
 
     public LocalDate getFechaPrestamo() {
@@ -37,14 +39,24 @@ public class Prestamo {
     public void setDetalleprestamos(LinkedList<DetallePrestamo> detalleprestamos) {
         this.detalleprestamos = detalleprestamos;
     }
+    
+    public double getValor() {
+        return valor;
+    }
 
+    public void setValor(double valor) {
+        this.valor = valor;
+    } 
+    
     @Override
     public String toString() {
-        return "Prestamo - fechaPrestamo=" + fechaPrestamo + ", fechaDevolucion=" + fechaDevolucion
+        return "Prestamo - fechaPrestamo=" + fechaPrestamo + ", fechaDevolucion=" + fechaDevolucion+", valorPrestamo="+valor
                 + "\ndetallesprestamo=\n" + detalleprestamos+"\n";
     }
   
     public void agregarDetallePrestamos(DetallePrestamo detallePrestamo){
         detalleprestamos.add(detallePrestamo);
     }
+
+    
 }
