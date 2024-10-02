@@ -1,0 +1,42 @@
+package co.edu.uniquindio.poo;
+import java.util.LinkedList;
+
+public class Autor extends Persona {
+
+    private int edad;
+    private LinkedList<Libro>libros;
+
+
+    public Autor(String nombre, String cedula, String telefono, String correo, int edad) {
+        super(nombre, cedula, telefono, correo);
+        this.edad = edad;
+        libros=new LinkedList<>();
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public LinkedList<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(LinkedList<Libro> libros) {
+        this.libros = libros;
+    }
+
+    @Override
+    public String toString() {
+        return "Autor - nombre=" + nombre + ", cedula=" + cedula + ", edad=" + edad + ", telefono=" + telefono
+                + ", libros=\n" + libros + ", correo=" + correo+"\n";
+    }
+
+    public void agregarLibroAutor(Libro libro){
+        libros.add(libro);
+    }
+    
+}
