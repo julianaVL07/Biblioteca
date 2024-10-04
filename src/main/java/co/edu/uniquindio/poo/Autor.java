@@ -11,6 +11,10 @@ public class Autor extends Persona {
         super(nombre, cedula, telefono, correo);
         this.edad = edad;
         libros=new LinkedList<>();
+        assert !nombre.isBlank();
+        assert !cedula.isBlank();
+        assert !telefono.isBlank();
+        assert !correo.isBlank();
     }
 
     public int getEdad() {
@@ -37,6 +41,16 @@ public class Autor extends Persona {
 
     public void agregarLibroAutor(Libro libro){
         libros.add(libro);
+    }
+
+    public LinkedList<Libro>librosMismoEditorial(Editorial editorial){
+        LinkedList<Libro>librosMismaEditorial =new LinkedList<>();
+        for (Libro libro:libros){
+            if (libro.getEditorial().equals(editorial)){
+                librosMismaEditorial.add(libro);
+            }
+        }
+        return librosMismaEditorial;
     }
     
 }

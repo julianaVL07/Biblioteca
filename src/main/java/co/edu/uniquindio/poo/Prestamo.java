@@ -58,5 +58,13 @@ public class Prestamo {
         detalleprestamos.add(detallePrestamo);
     }
 
-    
+    public LinkedList<DetallePrestamo> detallesMismoLibro(Libro libro){
+        LinkedList<DetallePrestamo> detallesLibroIgual=new LinkedList<>();
+        for (DetallePrestamo detallePrestamo:detalleprestamos){
+            if(detallePrestamo.getLibro().equals(libro)){
+                detallesLibroIgual.add(detallePrestamo);
+            }
+        }
+        return detallesLibroIgual;
+    }
 }

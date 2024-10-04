@@ -22,6 +22,7 @@ public class Libro {
         detalleprestamos=new LinkedList<>();
         this.autor=autor;
         this.editorial=editorial;
+        assert unidadesDisponibles>10;
 
     }
 
@@ -98,6 +99,14 @@ public class Libro {
     public void agregarDetallePrestamosLibro(DetallePrestamo detallePrestamo){
         detalleprestamos.add(detallePrestamo);
     }
-    
-    
+
+    public LinkedList<DetallePrestamo> detallesMayorA3(){
+        LinkedList<DetallePrestamo> detallesCantidadRequerida=new LinkedList<>();
+        for(DetallePrestamo detallePrestamo:detalleprestamos){
+            if (detallePrestamo.getCantidad()>3){
+                detallesCantidadRequerida.add(detallePrestamo);
+            }
+        }
+        return detallesCantidadRequerida;
+    }
 }

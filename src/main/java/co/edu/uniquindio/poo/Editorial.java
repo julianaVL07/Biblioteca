@@ -11,6 +11,8 @@ public class Editorial {
         this.nombre = nombre;
         this.dueno = dueno;
         libros=new LinkedList<>();
+        assert !nombre.isBlank();
+        assert !dueno.isBlank();
     }
 
     public String getNombre() {

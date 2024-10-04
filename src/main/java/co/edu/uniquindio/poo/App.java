@@ -27,22 +27,22 @@ public class App {
         Editorial editorial3 = new Editorial("Anagrama", "Jorge Herralde");
 
         //creamos los libros 
-        Libro libro = new Libro("001", "978-3-16-148410-0", "Cien años de soledad",LocalDate.of(2024, 9, 15) , 10, autor, editorial);
+        Libro libro = new Libro("001", "978-3-16-148410-0", "Cien años de soledad",LocalDate.of(2024, 9, 15) , 12, autor, editorial);
         Libro libro2 = new Libro("002", "978-0-7475-3269-9", "Harry Potter y la piedra filosofal", LocalDate.of(2024, 5, 5), 25, autor2, editorial2);
         Libro libro3 = new Libro("003", "978-0-553-80370-0", "Fundación", LocalDate.of(2024, 11, 13),15, autor3, editorial3);
 
         //creamos los detalleprestamos
-        DetallePrestamo detallePrestamo = new DetallePrestamo(2, libro);
-        DetallePrestamo detallePrestamo2 = new DetallePrestamo(1, libro2);
-        DetallePrestamo detallePrestamo3 = new DetallePrestamo(3, libro3);
+        DetallePrestamo detallePrestamo = new DetallePrestamo(5, libro);
+        DetallePrestamo detallePrestamo2 = new DetallePrestamo(3, libro2);
+        DetallePrestamo detallePrestamo3 = new DetallePrestamo(4, libro3);
 
         //creamos los bibliotecarios
         Bibliotecario bibliotecario = new Bibliotecario("Ana Pérez", "123456789", "3001234567", "ana@biblioteca.com", 10);
         Bibliotecario bibliotecario2 = new Bibliotecario("Carlos Gómez", "987654321", "3007654321", "carlos@biblioteca.com", 4);
 
         //creamos los estudiantes
-        Estudiante estudiante = new Estudiante("Juan Pérez", "123456789", "3001234567", "juan@estudiante.com", 1000.50);
-        Estudiante estudiante2 = new Estudiante("María Gómez", "987654321", "3007654321", "maria@estudiante.com", 1200.75);
+        Estudiante estudiante = new Estudiante("Juan Pérez", "123456789", "3001234567", "juan@estudiante.com");
+        Estudiante estudiante2 = new Estudiante("María Gómez", "987654321", "3007654321", "maria@estudiante.com");
 
         //Agregar bibliotecarios a la biblioteca
         biblioteca.agregarBibliotecario(bibliotecario);

@@ -12,6 +12,10 @@ public class Bibliotecario extends Persona {
         this.salario =0;
         this.antiguedad=antiguedad;
         prestamos=new LinkedList<>();
+        assert !nombre.isBlank();
+        assert !cedula.isBlank();
+        assert !telefono.isBlank();
+        assert !correo.isBlank();
     }
 
     public double getSalario() {
